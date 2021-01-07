@@ -12,7 +12,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
-const { localMiddleware } = require('./routes/middlewares/local');
+const { checkIsLoggedIn } = require('./routes/middlewares/authenticate');
 
 const app = express(passport);
 
@@ -36,7 +36,7 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use('/', localMiddleware, indexRouter);
+app.use('/', checkIsLoggedIn, indexRouter);
 
 app.use((req, res, next) => {
   next(createError(404));

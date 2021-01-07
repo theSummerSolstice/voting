@@ -9,7 +9,7 @@ exports.getAllMyVotings = async userId => {
       data.dueDate = calculateDate(data.dueDate);
       data.isInProgress = checkInProgress(data.dueDate);
     });
-    return myVotingsData;
+    return myVotingsData.myVotings;
   } catch (error) {
     console.error(DB_ERROR_READING_MY_VOTINGS);
     throw new Error(error);

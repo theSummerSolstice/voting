@@ -1,8 +1,8 @@
-const indexService = require('../../services/index.service');
+const mainService = require('../../services/main.service');
 
 exports.getAllVotings = async (req, res, next) => {
   try {
-    const allVotingsData = await indexService.getAllVotings();
+    const allVotingsData = await mainService.getAllVotings();
     req.votingsData = allVotingsData;
     next();
   } catch (error) {

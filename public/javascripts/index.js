@@ -2,11 +2,11 @@ const voteOption = document.querySelector('.option');
 const addButton = document.querySelector('.add-button');
 const voteList = document.querySelector('.vote-options');
 
-let list = [];
 const handleAddButton = () => {
+  let list = [];
   list.push(voteOption.value);
 
-  list.map(option => {
+  list.forEach(option => {
     const div = document.createElement('div');
     div.setAttribute('class', 'option-wrapper');
     const input = document.createElement('input');
@@ -27,9 +27,7 @@ const handleAddButton = () => {
   list = [];
   const voteElements = document.getElementsByClassName('option-wrapper');
   [...voteElements].forEach(element => {
-    element.addEventListener('click', event => {
-      handleDeleteButton(event);
-    });
+    element.addEventListener('click', handleDeleteButton);
   });
   voteOption.value = '';
 };

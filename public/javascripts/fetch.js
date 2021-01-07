@@ -1,3 +1,5 @@
+import { otherMessage } from '../../constants';
+
 const votingButton = document.querySelector('.voting-button');
 const deleteButton = document.querySelector('.delete-button');
 const votingId = document.querySelector('.voting-option').dataset.votingid;
@@ -44,7 +46,7 @@ const handleDeleteRequest = async () => {
   try {
     const response = await fetch(`${location.origin}/votings/${votingId}`, option);
 
-    if (response.result = 'ok') {
+    if (response.result === otherMessage.RESULT_OK) {
       window.location.href = `${location.origin}/`;
     }
   } catch (error) {

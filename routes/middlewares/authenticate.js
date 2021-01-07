@@ -15,3 +15,8 @@ exports.isNotLoggedIn = (req, res, next) => {
   }
   return res.redirect('/');
 };
+
+exports.checkIsLoggedIn = (req, res, next) => {
+  res.locals.isLoggedIn = !!req.user;
+  next();
+};

@@ -3,8 +3,8 @@ const myVotingsService = require('../../services/my-votings.service');
 exports.getAllMyVotings = async (req, res, next) => {
   try {
     const userId = req.user._id;
-    const myVotingsData = await myVotingsService.getAllMyVotings(userId);
-    req.myVotingsData = myVotingsData.myVotings;
+    const myVotings = await myVotingsService.getAllMyVotings(userId);
+    req.myVotings = myVotings;
     next();
   } catch (error) {
     next(error);
@@ -12,6 +12,6 @@ exports.getAllMyVotings = async (req, res, next) => {
 };
 
 exports.renderMyVotings = (req, res, next) => {
-  const myVotings = req.myVotingsData;
+  const myVotings = req.myVotings;
   res.render('my-votings', { myVotings });
 };

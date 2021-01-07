@@ -10,7 +10,7 @@ exports.createNewVoting = async (req, res, next) => {
   } = req.body;
   const userId = req.user._id;
 
-  const mappedOptions = optionTitle.map(option => {
+  const options = optionTitle.map(option => {
     return { optionTitle: option, votedCount: [] };
   });
 
@@ -18,7 +18,7 @@ exports.createNewVoting = async (req, res, next) => {
     title,
     writer: userId,
     dueDate,
-    options: mappedOptions,
+    options,
     voter: [],
   };
 
